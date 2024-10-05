@@ -1,0 +1,22 @@
+api-version: "1.20"
+name: Core
+version: "1.0"
+main: ru.lewis.core.bootstrap.Bootstrap
+loader: ru.lewis.core.bootstrap.Loader
+author: Lewis Carrol
+has-open-classloader: false
+folia-supported: true
+dependencies:
+  server:
+    LangHelper:
+      load: BEFORE
+      required: true
+      join-classpath: true
+    PlaceholderAPI:
+      load: BEFORE
+      required: true
+      join-classpath: true
+    helper:
+      load: BEFORE
+      required: true
+      join-classpath: true
