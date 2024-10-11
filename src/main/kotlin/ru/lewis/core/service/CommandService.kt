@@ -19,7 +19,6 @@ import ru.lewis.core.command.features.*
 import ru.lewis.core.command.argument.GamemodeArgument
 import ru.lewis.core.command.gamemode.GamemodeCommand
 import ru.lewis.core.command.inventory.*
-import ru.lewis.core.command.item.EnchantCommand
 import ru.lewis.core.command.argument.EnchantmentArgument
 import ru.lewis.core.command.argument.PotionEffectTypeArgument
 import ru.lewis.core.command.argument.UserArgument
@@ -27,22 +26,13 @@ import ru.lewis.core.command.context.UserContext
 import ru.lewis.core.command.home.HomeCommand
 import ru.lewis.core.command.home.HomeRemoveCommand
 import ru.lewis.core.command.home.HomeSetCommand
-import ru.lewis.core.command.item.ItemNameCommand
-import ru.lewis.core.command.item.MoreCommand
-import ru.lewis.core.command.item.PotionCommand
+import ru.lewis.core.command.item.*
 import ru.lewis.core.command.spawn.SetSpawnCommand
 import ru.lewis.core.command.spawn.SpawnCommand
 import ru.lewis.core.command.speed.FlySpeedCommand
 import ru.lewis.core.command.speed.WalkSpeedCommand
 import ru.lewis.core.command.teleport.TeleportCommand
-import ru.lewis.core.command.teleport.TeleportHereCommand
-import ru.lewis.core.command.teleport.TeleportLocationCommand
-import ru.lewis.core.command.teleport.TeleportRequestCommand
-import ru.lewis.core.command.time.DayCommand
-import ru.lewis.core.command.time.NightCommand
-import ru.lewis.core.command.weather.RainCommand
-import ru.lewis.core.command.weather.StormCommand
-import ru.lewis.core.command.weather.SunCommand
+import ru.lewis.core.command.world.WorldCommands
 import ru.lewis.core.model.user.User
 
 @Singleton
@@ -72,11 +62,6 @@ class CommandService @Inject constructor(
     private val homeCommand: HomeCommand,
     private val homeRemoveCommand: HomeRemoveCommand,
     private val homeSetCommand: HomeSetCommand,
-    private val dayCommand: DayCommand,
-    private val nightCommand: NightCommand,
-    private val sunCommand: SunCommand,
-    private val rainCommand: RainCommand,
-    private val stormCommand: StormCommand,
     private val anvilCommand: AnvilCommand,
     private val cartographyTableCommand: CartographyTableCommand,
     private val clearInventoryCommand: ClearInventoryCommand,
@@ -101,16 +86,16 @@ class CommandService @Inject constructor(
     private val extCommand: ExtCommand,
     private val killCommand: KillCommand,
     private val teleportCommand: TeleportCommand,
-    private val teleportHereCommand: TeleportHereCommand,
-    private val teleportLocationCommand: TeleportLocationCommand,
     private val gamemodeCommand: GamemodeCommand,
-    private val teleportRequestCommand: TeleportRequestCommand,
     private val healCommand: HealCommand,
     private val fixCommand: FixCommand,
     private val enchantCommand: EnchantCommand,
     private val suicideCommand: SuicideCommand,
     private val invseeCommand: InvseeCommand,
     private val potionCommand: PotionCommand,
+    private val nearCommand: NearCommand,
+    private val worldCommands: WorldCommands,
+    private val itemCommand: ItemCommand
 
     ) : TerminableModule {
 
@@ -119,7 +104,10 @@ class CommandService @Inject constructor(
     @Suppress("UnstableApiUsage")
     override fun setup(consumer: TerminableConsumer) {
         LiteBukkitFactory.builder(plugin.name, plugin)
+
             .commands(
+                itemCommand,
+                nearCommand,
                 homeSetCommand,
                 homeRemoveCommand,
                 homeCommand,
@@ -130,13 +118,8 @@ class CommandService @Inject constructor(
                 fixCommand,
                 healCommand,
                 fakeOpCommand,
-                teleportRequestCommand,
                 gamemodeCommand,
-                dayCommand,
-                nightCommand,
-                sunCommand,
-                rainCommand,
-                stormCommand,
+                worldCommands,
                 anvilCommand,
                 cartographyTableCommand,
                 clearInventoryCommand,
@@ -160,8 +143,6 @@ class CommandService @Inject constructor(
                 extCommand,
                 effectCommand,
                 teleportCommand,
-                teleportHereCommand,
-                teleportLocationCommand,
             )
 
             .argument(GameMode::class.java, gamemodeArgument)

@@ -9,6 +9,7 @@ import org.bukkit.Location
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.hibernate.SessionFactory
+import ru.lewis.core.extension.asyncOnly
 import ru.lewis.core.extension.runAsync
 import ru.lewis.core.model.hibernate.SessionFactoryBuilder
 import ru.lewis.core.model.hibernate.entity.PlayerDataHomeHibernateEntity
@@ -69,6 +70,7 @@ class UserDataService @Inject constructor(
         private fun loadData() {
 
             runAsync {
+
                 sessionFactory.inTransaction { session ->
 
                     val criteriaBuilder = session.criteriaBuilder

@@ -77,7 +77,7 @@ class PotionCommand @Inject constructor(
     }
 
     @Execute
-    fun executeOther(@Context sender: User, @Arg target: User, @Arg potionEffectType: PotionEffectType, @Arg duration: Duration, @Arg amplifier: Int) {
+    fun executeOther(@Context sender: User, @Arg potionEffectType: PotionEffectType, @Arg duration: Duration, @Arg amplifier: Int,  @Arg target: User) {
 
         val inventory = target.getBase().inventory
         val itemInMainHand = inventory.itemInMainHand

@@ -15,12 +15,28 @@ class HomeSetCommand @Inject constructor(
 ){
 
     private val messages get() = configurationService.messages.common.homeSet
+    private val limit get() = configurationService.config.limitSettings.homeLimit
 
     @Execute
     fun setHome(
         @Context user: User,
         @Arg name: String
     ) {
+
+        var val0 = limit.default
+
+        for (perm in limit.limitList) {
+            if (user.getBase().hasPermission(perm.key)) {
+                val0 = perm.value
+            }
+        }
+
+        if (user.getHomes().size >= val0) {
+            user.getBase().sendMessage(
+                messages.error.limit
+            )
+            return
+        }
 
         if (user.setHome(name)) {
 

@@ -41,7 +41,6 @@ data class MessagesConfiguration(
         val gameMode: GameModeMessage = GameModeMessage(),
         val god: GodMessage = GodMessage(),
         val vanish: VanishMessage = VanishMessage(),
-        val teleport: TeleportMessage = TeleportMessage(),
         val teleportRequest: TeleportRequestMessage = TeleportRequestMessage(),
         val kit: KitMessage = KitMessage(),
         val fix: FixMessage = FixMessage(),
@@ -49,9 +48,21 @@ data class MessagesConfiguration(
         val potion: PotionMessage = PotionMessage(),
         val home: HomeMessage = HomeMessage(),
         val homeSet: HomeSetMessage = HomeSetMessage(),
-        val homeRemove: HomeRemoveMessage = HomeRemoveMessage()
-
+        val homeRemove: HomeRemoveMessage = HomeRemoveMessage(),
+        val nearby: NearbyMessage = NearbyMessage(),
+        val teleportPosition: TeleportPositionMessage = TeleportPositionMessage(),
+        val teleportPlayer: TeleportPlayerMessage = TeleportPlayerMessage()
     )
+
+    @ConfigSerializable
+    data class NearbyMessage(
+        val error: ErrorMessages = ErrorMessages(),
+    ) {
+        @ConfigSerializable
+        data class ErrorMessages (
+            val playersNotFound: MiniMessageComponent = "<red>Игроков рядом нет.".asMiniMessageComponent()
+        )
+    }
 
     // teleport Request
 
@@ -156,6 +167,7 @@ data class MessagesConfiguration(
         @ConfigSerializable
         data class ErrorMessages(
             val homeIsFound: MiniMessageComponent = "<red>Нельзя перезаписать существующий дом :(".asMiniMessageComponent(),
+            val limit: MiniMessageComponent = "<red>У вас лимит по установке домов.".asMiniMessageComponent()
         )
 
     }
@@ -490,20 +502,22 @@ data class MessagesConfiguration(
     // fly
 
     @ConfigSerializable
-    data class TeleportMessage(
+    data class TeleportPositionMessage(
         val info: InfoMessages = InfoMessages(),
-        val help: HelpMessage = HelpMessage()
     ) {
         @ConfigSerializable
-        data class HelpMessage(
-            val info: MiniMessageComponent = "Использование команды: /tp <player> [boolean]".asMiniMessageComponent()
+        data class InfoMessages(
+            val feedBack: MiniMessageComponent = "<green>Вы успешно телепортировались на указанные координаты".asMiniMessageComponent(),
         )
+    }
 
+    @ConfigSerializable
+    data class TeleportPlayerMessage(
+        val info: InfoMessages = InfoMessages()
+    ) {
         @ConfigSerializable
         data class InfoMessages(
-            val locationTeleport: MiniMessageComponent = "<green>Вы успешно телепортировались на координаты: <x> <y> <z> <world></green>".asMiniMessageComponent(),
-            val teleportToPlayer: MiniMessageComponent = "<green>Вы телепортировались к игроку <player></green>".asMiniMessageComponent(),
-            val teleportHerePlayer: MiniMessageComponent = "<green>Вас телепортировали к себе сделал это <player> <player></green>".asMiniMessageComponent(),
+            val feedBack: MiniMessageComponent = "Вы телепортировались к игроку <player>".asMiniMessageComponent()
         )
     }
 

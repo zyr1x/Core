@@ -22,6 +22,7 @@ class SpawnCommand @Inject constructor(
 
     private val settings get() = configurationService.config.spawnSettings
     private val messages get() = configurationService.messages.common.spawn
+    private val config get() = configurationService.config.soundSettings
 
     @Execute
     fun execute(@Context sender: User) {
@@ -34,7 +35,10 @@ class SpawnCommand @Inject constructor(
             settings.location.pitch
         )
 
-        sender.getBase().teleportAsync(location)
+        sender.getBase().teleportAsync(location).thenRun {
+            config.teleport.play(sender.getBase())
+        }
+
         sender.getBase().sendMessage(messages.info.feedBack)
     }
 
@@ -51,7 +55,9 @@ class SpawnCommand @Inject constructor(
             settings.location.pitch
             )
 
-        target.getBase().teleportAsync(location)
+        target.getBase().teleportAsync(location).thenRun {
+            config.teleport.play(target.getBase())
+        }
 
         sender.getBase().sendMessage(messages.info.feedBackToTarget.resolve(
             Placeholder.unparsed(

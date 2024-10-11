@@ -14,7 +14,6 @@ data class Configuration(
     val database: DatabaseConfiguration,
     val performance: Performance = Performance(),
     val spawnSettings: SpawnSettings = SpawnSettings(),
-    val nearSettings: NearSettings = NearSettings(),
 
     val disableJoinMessage: Boolean = true,
     val disableQuitMessage: Boolean = true,
@@ -22,7 +21,11 @@ data class Configuration(
     val disableDisableCrystalDamageToItem: Boolean = true,
     val disableModernUseElytra: Boolean = true,
 
-    val soundSettings: SoundSettings = SoundSettings()
+    val soundSettings: SoundSettings = SoundSettings(),
+
+    val nearbySettings: NearbySettings = NearbySettings(),
+
+    val limitSettings: LimitSettings = LimitSettings()
 
     ) {
     @ConfigSerializable
@@ -65,15 +68,38 @@ data class Configuration(
     }
 
     @ConfigSerializable
-    data class NearSettings(
-        val permissions: List<Permission> = listOf(Permission())
+    data class NearbySettings(
+
+        val parameters: List<Setting> = listOf(
+            Setting()
+        )
+
+    ) {
+        @ConfigSerializable
+        data class Setting(
+            val radius: Int = 100,
+            val permission: String = "group.admin"
+        )
+    }
+
+    @ConfigSerializable
+    data class LimitSettings(
+
+        val homeLimit: HomeLimit = HomeLimit()
+
     ) {
 
         @ConfigSerializable
-        data class Permission(
-            val name : String = "near.1",
-            val radius: Int = 300
+        data class HomeLimit(
+            val default: Int = 5,
+            val limitList: Map<String, Int> = mapOf(
+                Pair(
+                    "group.default",
+                    10
+                )
+            )
         )
 
     }
+
 }

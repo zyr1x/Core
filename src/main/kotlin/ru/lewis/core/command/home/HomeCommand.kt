@@ -72,9 +72,9 @@ class HomeCommand @Inject constructor(
             )
         )
 
-        player.teleportAsync(location)
-
-        config.soundSettings.teleport.play(player)
+        player.teleportAsync(location).thenRun {
+            config.soundSettings.teleport.play(player)
+        }
 
     }
 

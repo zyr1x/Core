@@ -40,8 +40,8 @@ class WalkSpeedCommand @Inject constructor(
     @Permission("core.command.walkSpeed.others")
     @Execute
     fun execute(@Context sender: User,
-                @Arg target: User,
-                @Arg @Key("1..10") speed: Int) {
+                @Arg @Key("1..10") speed: Int,
+                @Arg target: User) {
 
         val value : Float = speed.toFloat() / 10.0f
         target.getBase().walkSpeed = value

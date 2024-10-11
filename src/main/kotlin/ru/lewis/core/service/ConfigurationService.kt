@@ -18,6 +18,7 @@ import org.spongepowered.configurate.yaml.NodeStyle
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader
 import ru.boomearo.langhelper.versions.LangType
 import ru.lewis.core.configuration.Configuration
+import ru.lewis.core.configuration.FormatConfiguration
 import ru.lewis.core.configuration.GuisConfiguration
 import ru.lewis.core.configuration.MessagesConfiguration
 import ru.lewis.core.configuration.serializer.*
@@ -46,6 +47,9 @@ class ConfigurationService @Inject constructor(
     lateinit var config: Configuration
         private set
 
+    lateinit var format: FormatConfiguration
+        private set
+
     lateinit var messages: MessagesConfiguration
         private set
 
@@ -56,6 +60,7 @@ class ConfigurationService @Inject constructor(
     private val settingsFile = plugin.dataFolder.toPath().resolve("settings.yml")
     private val guisFile = plugin.dataFolder.toPath().resolve("guis.yml")
     private val messagesFile = plugin.dataFolder.toPath().resolve("language/message_ru.yml")
+    private val formatFile = plugin.dataFolder.toPath().resolve("format.yml")
 
     override fun setup(consumer: TerminableConsumer) = doReload()
 
@@ -75,9 +80,12 @@ class ConfigurationService @Inject constructor(
     private fun doReload() {
         plugin.dataFolder.toPath().createDirectories()
 
-        guis = createLoaderBuilder().path(guisFile).build().getAndSave<GuisConfiguration>()
-        config = createLoaderBuilder().path(settingsFile).build().getAndSave<Configuration>()
-        messages = createLoaderBuilder().path(messagesFile).build().getAndSave<MessagesConfiguration>()
+        val builder = createLoaderBuilder()
+
+        format = builder.path(formatFile).build().getAndSave<FormatConfiguration>()
+        guis = builder.path(guisFile).build().getAndSave<GuisConfiguration>()
+        config = builder.path(settingsFile).build().getAndSave<Configuration>()
+        messages = builder.path(messagesFile).build().getAndSave<MessagesConfiguration>()
     }
 
     private fun createLoaderBuilder(): YamlConfigurationLoader.Builder {
