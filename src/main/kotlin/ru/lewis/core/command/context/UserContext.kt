@@ -8,11 +8,11 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import ru.lewis.core.model.user.User
 import ru.lewis.core.service.ConfigurationService
-import ru.lewis.core.service.UserService
+import ru.lewis.core.model.manager.UserManager
 
 class UserContext @Inject constructor(
     private val configurationService: ConfigurationService,
-    private val userService: UserService
+    private val userService: UserManager
 ): ContextProvider<CommandSender, User> {
 
     private val errors get() = configurationService.messages.errors

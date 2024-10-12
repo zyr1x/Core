@@ -8,19 +8,17 @@ import jakarta.inject.Inject
 import net.kyori.adventure.text.minimessage.tag.resolver.Formatter
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder
 import org.bukkit.entity.Player
-import ru.lewis.core.configuration.type.MiniMessageComponent
 import ru.lewis.core.extension.asMiniMessageComponent
 import ru.lewis.core.model.user.User
 import ru.lewis.core.service.ConfigurationService
-import ru.lewis.core.service.UserService
-import kotlin.math.abs
+import ru.lewis.core.model.manager.UserManager
 import kotlin.math.sqrt
 
 @Command(name = "near")
 @Permission("core.command.near")
 class NearCommand @Inject constructor(
     private val configurationService: ConfigurationService,
-    private val userService: UserService
+    private val userService: UserManager
 ){
 
     private val format get() = configurationService.format.nearby

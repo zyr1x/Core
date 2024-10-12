@@ -90,6 +90,15 @@ data class GuisConfiguration(
                     )
                 ),
             ),
+
+            val warpItemTemplate: ItemTemplate = ItemTemplate(
+                Material.GREEN_SHULKER_BOX,
+                displayName = "Варп: <name>".asMiniMessageComponent(),
+                lore = listOf(
+                    "<green>Нажмите, чтобы телепортироваться".asMiniMessageComponent()
+                )
+            )
+
         )
 
         @ConfigSerializable

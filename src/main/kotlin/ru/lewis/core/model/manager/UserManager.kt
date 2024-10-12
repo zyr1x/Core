@@ -1,19 +1,22 @@
-package ru.lewis.core.service
+package ru.lewis.core.model.manager
 
 import jakarta.inject.Inject
 import jakarta.inject.Singleton
 import me.lucko.helper.Events
 import me.lucko.helper.terminable.TerminableConsumer
 import me.lucko.helper.terminable.module.TerminableModule
+import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerQuitEvent
 import ru.lewis.core.model.AssistedInjectFactories
 import ru.lewis.core.model.user.User
+import ru.lewis.core.service.GlobalService
+import ru.lewis.core.service.UserDataService
 
 @Singleton
-class UserService @Inject constructor(
+class UserManager @Inject constructor(
     private val assistedInjectFactories: AssistedInjectFactories,
-    private val userDataService: UserDataService
+    private val globalService: GlobalService
 ) : TerminableModule {
 
     override fun setup(consumer: TerminableConsumer) {
@@ -27,15 +30,15 @@ class UserService @Inject constructor(
 
     private val users: MutableList<User> = mutableListOf()
 
-    fun getUser(player: Player): User {
-        return this.getUserOrCreate(player)
+    fun getUser(offlinePlayer: OfflinePlayer): User {
+        return this.getUserOrCreate(offlinePlayer)
     }
 
-    private fun getUserOrCreate(player: Player): User {
+    private fun getUserOrCreate(offlinePlayer: OfflinePlayer): User {
 
         for (user in users) {
 
-            if (user.getUUID() == player.uniqueId) {
+            if (user.getUUID() == offlinePlayer.uniqueId) {
 
                 return user
 
@@ -43,8 +46,8 @@ class UserService @Inject constructor(
 
         }
 
-        val playerDataHomeActual: UserDataService.PlayerDataHomeActual = userDataService.PlayerDataHomeActual(player)
-        val user = assistedInjectFactories.createUser(player, playerDataHomeActual)
+        val playerDataHomeActual: UserDataService.PlayerDataHomeActual = globalService.getUserData().PlayerDataHomeActual(offlinePlayer)
+        val user = assistedInjectFactories.createUser(offlinePlayer, playerDataHomeActual)
         users.add(user)
 
         return user

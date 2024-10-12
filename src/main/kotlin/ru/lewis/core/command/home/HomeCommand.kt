@@ -12,6 +12,7 @@ import org.bukkit.event.inventory.ClickType
 import org.bukkit.event.inventory.InventoryClickEvent
 import ru.lewis.core.configuration.type.import
 import ru.lewis.core.model.AssistedInjectFactories
+import ru.lewis.core.model.templates.Home
 import ru.lewis.core.model.user.User
 import ru.lewis.core.service.ConfigurationService
 import xyz.xenondevs.invui.item.ItemProvider
@@ -33,24 +34,10 @@ class HomeCommand @Inject constructor(
     @Execute
     fun teleportHome(
         @Context user: User,
-        @Arg name: String
+        @Arg home: Home
     ) {
 
-        val location = user.getHome(name)
-
-        if (location == null) {
-            user.getBase().sendMessage(messages.error.homeNotFound
-                .resolve(
-                    Placeholder.unparsed(
-                        "name",
-                        name
-                    )
-                )
-            )
-            return
-        }
-
-        teleport(user.getBase(), name, location)
+        teleport(user.getBase(), home)
 
     }
 
@@ -61,18 +48,18 @@ class HomeCommand @Inject constructor(
         this.openMenu(user)
     }
 
-    private fun teleport(player: Player, name: String, location: Location) {
+    private fun teleport(player: Player, home: Home) {
 
         player.sendMessage(
             messages.info.feedBack.resolve(
                 Placeholder.unparsed(
                     "name",
-                    name
+                    home.getName()
                 )
             )
         )
 
-        player.teleportAsync(location).thenRun {
+        player.teleportAsync(home.getLocation()).thenRun {
             config.soundSettings.teleport.play(player)
         }
 
@@ -113,7 +100,7 @@ class HomeCommand @Inject constructor(
 
     private inner class HomeButton(
         private val user: User,
-        private val name: String,
+        private val home: Home,
     ): AbstractItem() {
 
         override fun getItemProvider(): ItemProvider {
@@ -121,7 +108,7 @@ class HomeCommand @Inject constructor(
                 gui.homeItemTemplate.resolve(
                     Placeholder.unparsed(
                         "name",
-                        name
+                        home.getName()
                     )
                 ).toItem()
             )
@@ -130,9 +117,9 @@ class HomeCommand @Inject constructor(
         override fun handleClick(clickType: ClickType, player: Player, event: InventoryClickEvent) {
             if (clickType.isLeftClick) {
                 player.openInventory.close()
-                teleport(player, name, user.getHome(name)!!)
+                teleport(player, home)
             } else if (clickType.isRightClick) {
-                user.delHome(name)
+                user.delHome(home.getName())
                 openMenu(user)
             }
         }

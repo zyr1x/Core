@@ -1,9 +1,14 @@
 package ru.lewis.core.model.user
 
+import com.google.inject.ImplementedBy
 import org.bukkit.Location
+import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
+import ru.lewis.core.model.templates.Home
+import ru.lewis.core.model.templates.Warp
 import java.util.UUID
 
+@ImplementedBy(UserFacade::class)
 interface User {
 
     /*
@@ -11,6 +16,7 @@ interface User {
      */
 
     fun getBase(): Player
+    fun getOfflinePlayer(): OfflinePlayer
 
     fun getName(): String
     fun getUUID(): UUID
@@ -31,11 +37,16 @@ interface User {
      * UserData
      */
 
-    fun getHome(name: String): Location?
-    fun getHomes(): List<String>
+    fun getHome(name: String): Home?
+    fun getHomes(): List<Home>
     fun setHome(name: String): Boolean
     fun delHome(name: String): Boolean
     fun hasHome(): Boolean
+
+    fun getWarp(name: String): Warp?
+    fun getWarps(): List<Warp>
+    fun setWarp(name: String): Boolean
+    fun delWarp(name: String): Boolean
 
 //    fun getWarp(name: String): Location
 //    fun getWarps(): List<String>

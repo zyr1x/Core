@@ -13,6 +13,10 @@ import org.slf4j.Logger
 import ru.boomearo.langhelper.LangHelper
 import ru.boomearo.langhelper.versions.TranslateManager
 import ru.lewis.core.model.AssistedInjectFactories
+import ru.lewis.core.model.templates.Home
+import ru.lewis.core.model.templates.Warp
+import ru.lewis.core.model.templates.impl.BasicHome
+import ru.lewis.core.model.templates.impl.BasicWarp
 import ru.lewis.core.model.user.User
 import ru.lewis.core.model.user.UserFacade
 import java.io.File
@@ -29,6 +33,8 @@ class InjectionModule(
         install(
             FactoryModuleBuilder()
                 .implement(User::class.java, UserFacade::class.java)
+                .implement(Warp::class.java, BasicWarp::class.java)
+                .implement(Home::class.java, BasicHome::class.java)
                 .build(AssistedInjectFactories::class.java)
         )
 

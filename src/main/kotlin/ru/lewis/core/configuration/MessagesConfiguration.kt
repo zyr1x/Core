@@ -51,7 +51,10 @@ data class MessagesConfiguration(
         val homeRemove: HomeRemoveMessage = HomeRemoveMessage(),
         val nearby: NearbyMessage = NearbyMessage(),
         val teleportPosition: TeleportPositionMessage = TeleportPositionMessage(),
-        val teleportPlayer: TeleportPlayerMessage = TeleportPlayerMessage()
+        val teleportPlayer: TeleportPlayerMessage = TeleportPlayerMessage(),
+        val warpSet: WarpSetMessages = WarpSetMessages(),
+        val warpTeleport: WarpTeleportMessages = WarpTeleportMessages(),
+        val warpRemove: WarpRemoveMessages = WarpRemoveMessages()
     )
 
     @ConfigSerializable
@@ -497,6 +500,57 @@ data class MessagesConfiguration(
             val feedBackToTarget: MiniMessageComponent = "<green>Вы успещнл установили скорость полета <speed> игроку <player>  <status></green>".asMiniMessageComponent(),
             val feedBackTarget: MiniMessageComponent = "<green>Вам успещнл установили скорость полета <speed> а сделал это <player> </green>".asMiniMessageComponent()
         )
+    }
+
+    @ConfigSerializable
+    data class WarpRemoveMessages(
+        val info: InfoMessages = InfoMessages(),
+        val errors: ErrorMessages = ErrorMessages()
+    ) {
+        @ConfigSerializable
+        data class InfoMessages(
+            val errors: ErrorMessages = ErrorMessages(),
+            val feedBack: MiniMessageComponent = "<green>вы удалили варп <name>!".asMiniMessageComponent()
+        )
+
+        @ConfigSerializable
+        data class ErrorMessages(
+            val warpNotFound: MiniMessageComponent = "<red>Такого варпа не существует!".asMiniMessageComponent(),
+            val notOwned: MiniMessageComponent = "<red>Вы не являетесь владельцем варпа!".asMiniMessageComponent()
+        )
+    }
+
+    @ConfigSerializable
+    data class WarpTeleportMessages(
+        val info: InfoMessages = InfoMessages(),
+        val errors: ErrorMessages = ErrorMessages()
+    ) {
+        @ConfigSerializable
+        data class InfoMessages(
+            val feedBack: MiniMessageComponent = "<green>Вы успешно телепортировались на варп <name>".asMiniMessageComponent()
+        )
+        @ConfigSerializable
+        data class ErrorMessages(
+            val warpNotFound: MiniMessageComponent = "<red>Такого варпа не существует!".asMiniMessageComponent()
+        )
+    }
+
+    @ConfigSerializable
+    data class WarpSetMessages(
+        val errors: ErrorMessages = ErrorMessages(),
+        val info: InfoMessages = InfoMessages()
+    ) {
+
+        @ConfigSerializable
+        data class InfoMessages(
+            val feedBack: MiniMessageComponent = "<green>Варп <name> успешно установлен!".asMiniMessageComponent()
+        )
+
+        @ConfigSerializable
+        data class ErrorMessages(
+            val warpIsFound: MiniMessageComponent = "<red>Такой варп уже существует, перезаписать не получится.".asMiniMessageComponent()
+        )
+
     }
 
     // fly

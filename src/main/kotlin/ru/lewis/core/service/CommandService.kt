@@ -15,13 +15,10 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.plugin.Plugin
 import org.bukkit.potion.PotionEffectType
 import ru.lewis.core.command.admin.ReloadCommand
+import ru.lewis.core.command.argument.*
 import ru.lewis.core.command.features.*
-import ru.lewis.core.command.argument.GamemodeArgument
 import ru.lewis.core.command.gamemode.GamemodeCommand
 import ru.lewis.core.command.inventory.*
-import ru.lewis.core.command.argument.EnchantmentArgument
-import ru.lewis.core.command.argument.PotionEffectTypeArgument
-import ru.lewis.core.command.argument.UserArgument
 import ru.lewis.core.command.context.UserContext
 import ru.lewis.core.command.home.HomeCommand
 import ru.lewis.core.command.home.HomeRemoveCommand
@@ -32,7 +29,12 @@ import ru.lewis.core.command.spawn.SpawnCommand
 import ru.lewis.core.command.speed.FlySpeedCommand
 import ru.lewis.core.command.speed.WalkSpeedCommand
 import ru.lewis.core.command.teleport.TeleportCommand
+import ru.lewis.core.command.warps.WarpRemoveCommand
+import ru.lewis.core.command.warps.WarpSetCommand
+import ru.lewis.core.command.warps.WarpTeleportCommand
 import ru.lewis.core.command.world.WorldCommands
+import ru.lewis.core.model.templates.Home
+import ru.lewis.core.model.templates.Warp
 import ru.lewis.core.model.user.User
 
 @Singleton
@@ -48,6 +50,8 @@ class CommandService @Inject constructor(
     private val potionEffectTypeArgument: PotionEffectTypeArgument,
     private val enchantmentArgument: EnchantmentArgument,
     private val userArgument: UserArgument,
+    private val homeArgument: HomeArgument,
+    private val warpArgument: WarpArgument,
 
     /*
     * context
@@ -95,7 +99,10 @@ class CommandService @Inject constructor(
     private val potionCommand: PotionCommand,
     private val nearCommand: NearCommand,
     private val worldCommands: WorldCommands,
-    private val itemCommand: ItemCommand
+    private val itemCommand: ItemCommand,
+    private val warpSetCommand: WarpSetCommand,
+    private val warpRemoveCommand: WarpRemoveCommand,
+    private val warpTeleportCommand: WarpTeleportCommand
 
     ) : TerminableModule {
 
@@ -106,6 +113,9 @@ class CommandService @Inject constructor(
         LiteBukkitFactory.builder(plugin.name, plugin)
 
             .commands(
+                warpSetCommand,
+                warpRemoveCommand,
+                warpTeleportCommand,
                 itemCommand,
                 nearCommand,
                 homeSetCommand,
@@ -145,6 +155,8 @@ class CommandService @Inject constructor(
                 teleportCommand,
             )
 
+            .argument(Warp::class.java, warpArgument)
+            .argument(Home::class.java, homeArgument)
             .argument(GameMode::class.java, gamemodeArgument)
             .argument(PotionEffectType::class.java, potionEffectTypeArgument)
             .argument(Enchantment::class.java, enchantmentArgument)

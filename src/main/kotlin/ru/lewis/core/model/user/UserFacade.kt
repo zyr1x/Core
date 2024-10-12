@@ -2,22 +2,21 @@ package ru.lewis.core.model.user
 
 import com.google.inject.assistedinject.Assisted
 import jakarta.inject.Inject
-import org.bukkit.entity.Player
-import ru.lewis.core.model.AssistedInjectFactories
+import org.bukkit.OfflinePlayer
+import ru.lewis.core.service.GlobalService
 import ru.lewis.core.service.UserDataService
-import java.math.BigDecimal
 
 class UserFacade @Inject constructor(
 
-    private val userDataService: UserDataService,
+    private val globalService: GlobalService,
 
-    @Assisted private val player: Player,
-    @Assisted private val playerDataHomeActual: UserDataService.PlayerDataHomeActual = userDataService.PlayerDataHomeActual(player)
+    @Assisted private val offlinePlayer: OfflinePlayer,
+    @Assisted private val playerDataHomeActual: UserDataService.PlayerDataHomeActual = globalService.getUserData().PlayerDataHomeActual(offlinePlayer)
 
-) : UserData(player, playerDataHomeActual), User {
+) : UserData(offlinePlayer, playerDataHomeActual, globalService.getWarpData()), User {
 
     override fun reset() {
-        userDataService.reset(this)
+        globalService.reset(this)
     }
 
     private val teleportRequests: MutableList<User> = mutableListOf()

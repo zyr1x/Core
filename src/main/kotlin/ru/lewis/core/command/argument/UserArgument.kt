@@ -11,10 +11,10 @@ import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
 import ru.lewis.core.model.user.User
 import ru.lewis.core.service.ConfigurationService
-import ru.lewis.core.service.UserService
+import ru.lewis.core.model.manager.UserManager
 
 class UserArgument @Inject constructor(
-    private val userService: UserService,
+    private val userService: UserManager,
     private val configurationService: ConfigurationService
 ): ArgumentResolver<CommandSender, User>() {
 
