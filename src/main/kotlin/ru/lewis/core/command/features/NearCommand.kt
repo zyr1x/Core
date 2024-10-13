@@ -8,6 +8,7 @@ import jakarta.inject.Inject
 import net.kyori.adventure.text.minimessage.tag.resolver.Formatter
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder
 import org.bukkit.entity.Player
+import ru.lewis.core.configuration.type.MiniMessageComponent
 import ru.lewis.core.extension.asMiniMessageComponent
 import ru.lewis.core.model.user.User
 import ru.lewis.core.service.ConfigurationService
@@ -55,7 +56,7 @@ class NearCommand @Inject constructor(
                             this.getDirection(
                                 sender.getBase(),
                                 it.getBase()
-                            ).asMiniMessageComponent()
+                            )
                         ),
                         Formatter.number(
                             "distance",
@@ -101,25 +102,45 @@ class NearCommand @Inject constructor(
 
     }
 
-    fun getDirection(player1: Player, player2: Player): String {
-        // Получаем направление взгляда первого игрока
-        val direction = player1.location.direction
+    fun getDirection(player1: Player, player2: Player): MiniMessageComponent {
 
-        // Получаем координаты второго игрока
+        val direction = player1.location.direction.normalize()
+
         val player2Location = player2.location.toVector()
 
-        // Вычисляем вектор от первого игрока ко второму
         val vectorToPlayer2 = player2Location.subtract(player1.location.toVector()).normalize()
 
-        // Определяем угол между векторами
         val angle = direction.angle(vectorToPlayer2)
 
+        val isRight = direction.x * vectorToPlayer2.z - direction.z * vectorToPlayer2.x > 0
+
         return when {
-            angle < Math.toRadians(45.0) -> "↑" // Вперед
-            angle > Math.toRadians(135.0) -> "↓" // Назад
-            direction.crossProduct(vectorToPlayer2).y > 0 -> "→" // Вправо
-            else -> "←" // Влево
+            angle < Math.toRadians(45.0) -> format.direction.south
+            angle > Math.toRadians(135.0) -> format.direction.north
+            isRight -> format.direction.east
+            else -> format.direction.west
         }
     }
+
+//    fun getDirection(player1: Player, player2: Player): MiniMessageComponent {
+//
+//        val direction = player1.location.direction.normalize()
+//
+//        val player2Location = player2.location.toVector()
+//
+//        val vectorToPlayer2 = player2Location.subtract(player1.location.toVector()).normalize()
+//
+//        val angle = direction.angle(vectorToPlayer2)
+//
+//        val isRight = direction.x * vectorToPlayer2.z - direction.z * vectorToPlayer2.x > 0
+//
+//        return when {
+//            angle < Math.toRadians(45.0) -> "↑"
+//            angle > Math.toRadians(135.0) -> "↓"
+//            isRight -> "→"
+//            else -> "←"
+//        }
+//    }
+
 
 }

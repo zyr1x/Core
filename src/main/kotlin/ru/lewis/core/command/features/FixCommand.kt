@@ -49,7 +49,7 @@ class FixCommand @Inject constructor(
         val inventory = sender.getBase().inventory
         var amount = 0
 
-        for (item in inventory.storageContents) {
+        for (item in inventory.contents) {
 
             item?.apply {
                 itemMeta = (itemMeta as Damageable).apply {

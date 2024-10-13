@@ -28,7 +28,6 @@ data class MessagesConfiguration(
         val flySpeed: FlySpeedMessage = FlySpeedMessage(),
         val heal: HealMessage = HealMessage(),
         val itemName: ItemNameMessage = ItemNameMessage(),
-        val itemLore: ItemLoreMessage = ItemLoreMessage(),
         val jump: JumpMessage = JumpMessage(),
         val kill: KillMessage = KillMessage(),
         val loom: LoomMessage = LoomMessage(),
@@ -41,7 +40,6 @@ data class MessagesConfiguration(
         val gameMode: GameModeMessage = GameModeMessage(),
         val god: GodMessage = GodMessage(),
         val vanish: VanishMessage = VanishMessage(),
-        val teleportRequest: TeleportRequestMessage = TeleportRequestMessage(),
         val kit: KitMessage = KitMessage(),
         val fix: FixMessage = FixMessage(),
         val suicide: SuicideMessage = SuicideMessage(),
@@ -54,7 +52,12 @@ data class MessagesConfiguration(
         val teleportPlayer: TeleportPlayerMessage = TeleportPlayerMessage(),
         val warpSet: WarpSetMessages = WarpSetMessages(),
         val warpTeleport: WarpTeleportMessages = WarpTeleportMessages(),
-        val warpRemove: WarpRemoveMessages = WarpRemoveMessages()
+        val warpRemove: WarpRemoveMessages = WarpRemoveMessages(),
+        val tpHere: TeleportHereMessages = TeleportHereMessages(),
+        val feed: FeedMessages = FeedMessages(),
+        val teleportRequest: TeleportRequestMessages = TeleportRequestMessages(),
+        val teleportRequestAccept: TeleportRequestAcceptMessages = TeleportRequestAcceptMessages(),
+        val teleportRequestCancel: TeleportRequestCancelMessages = TeleportRequestCancelMessages()
     )
 
     @ConfigSerializable
@@ -67,59 +70,82 @@ data class MessagesConfiguration(
         )
     }
 
-    // teleport Request
+    @ConfigSerializable
+    data class FeedMessages(
+        val info: InfoMessages = InfoMessages()
+    ) {
+        @ConfigSerializable
+        data class InfoMessages(
+            val feedBack: MiniMessageComponent = "<green>Вы успешно утолили себе голод".asMiniMessageComponent(),
+            val feedBackToTarget: MiniMessageComponent = "<green>Вы утолили голод игроку <player>".asMiniMessageComponent(),
+            val feedBackTarget: MiniMessageComponent = "<green>Вам утолил голод игрок <player>".asMiniMessageComponent()
+        )
+    }
 
     @ConfigSerializable
-    data class TeleportRequestMessage(
-
-        val help: HelpMessage = HelpMessage(),
+    data class TeleportRequestCancelMessages(
         val info: InfoMessages = InfoMessages(),
-        val teleportRequestAccept: TeleportRequestAccept = TeleportRequestAccept(),
-        val teleportRequestDeny: TeleportRequestDeny = TeleportRequestDeny()
-
+        val error: ErrorMessages = ErrorMessages()
     ) {
 
         @ConfigSerializable
-        data class HelpMessage(
-            val info: MiniMessageComponent = "Использование команды: /tpa <accept/deny/player>".asMiniMessageComponent()
+        data class InfoMessages(
+            val feedBack: MiniMessageComponent = "Вы отменили запрос к игроку <player>".asMiniMessageComponent()
         )
+
+        @ConfigSerializable
+        data class ErrorMessages(
+            val playerNotFound: MiniMessageComponent = "Вы не отправляли игроку <player> запросов!".asMiniMessageComponent()
+        )
+
+    }
+
+    @ConfigSerializable
+    data class TeleportRequestAcceptMessages(
+        val info: InfoMessages = InfoMessages(),
+        val error: ErrorMessages = ErrorMessages()
+    ) {
 
         @ConfigSerializable
         data class InfoMessages(
-            val feedBack: MiniMessageComponent = "Вы успешно отправили запрос игроку <player>".asMiniMessageComponent(),
-            val feedBackError: MiniMessageComponent = "Вы уже отправляли запрос этому игроку.".asMiniMessageComponent()
+            val feedBack: MiniMessageComponent = "Вы приняли запрос от игрока <player>".asMiniMessageComponent()
         )
 
         @ConfigSerializable
-        data class TeleportRequestAccept(
+        data class ErrorMessages(
+            val playerNotFound: MiniMessageComponent = "Игрок не найден в ваших запросах".asMiniMessageComponent()
+        )
 
-            val info: InfoMessages = InfoMessages()
+    }
 
-        ) {
-
-            @ConfigSerializable
-            data class InfoMessages(
-                val feedBack: MiniMessageComponent = "Вы успешно приняли запрос от <player>".asMiniMessageComponent(),
-                val feedBackError: MiniMessageComponent = "Вы не ждете ни от кого запроса".asMiniMessageComponent(),
-                val feedBackTarget: MiniMessageComponent = "<green>Игрок <player> отправил вам запрос на телепортакцию к вам <gray>(Принять: /tpa accept <player>)".asMiniMessageComponent()
-            )
-
-        }
+    @ConfigSerializable
+    data class TeleportRequestMessages(
+        val info: InfoMessages = InfoMessages(),
+        val error: ErrorMessages = ErrorMessages()
+    ) {
 
         @ConfigSerializable
-        data class TeleportRequestDeny(
+        data class InfoMessages(
+            val feedBack: MiniMessageComponent = "Вы отправили запрос игроку <player>".asMiniMessageComponent(),
+            val feedBackTarget: MiniMessageComponent = "Вам отправил запрос на телепортацию игрок <player>".asMiniMessageComponent()
+        )
 
-            val info: InfoMessages = InfoMessages()
+        @ConfigSerializable
+        data class ErrorMessages(
+            val repeatRequest: MiniMessageComponent = "Вы уже отправляли запрос этому игроку!".asMiniMessageComponent()
+        )
 
-        ) {
+    }
 
-            @ConfigSerializable
-            data class InfoMessages(
-                val feedBack: MiniMessageComponent = "Вы успешно отказали в запросе игроку <player>".asMiniMessageComponent(),
-                val feedBackError: MiniMessageComponent = "Вы не ждете ни от кого запроса".asMiniMessageComponent()
-            )
-
-        }
+    @ConfigSerializable
+    data class TeleportHereMessages(
+        val info: InfoMessages = InfoMessages()
+    ) {
+        @ConfigSerializable
+        data class InfoMessages(
+            val feedBackTarget: MiniMessageComponent = "Вы были успешно телепортированы к игроку <player>".asMiniMessageComponent(),
+            val feedBack: MiniMessageComponent = "Вы успешно телепортировали игрока <player> к себе!".asMiniMessageComponent()
+        )
     }
 
     // removeHome
@@ -685,27 +711,6 @@ data class MessagesConfiguration(
         @ConfigSerializable
         data class InfoMessages(
             val feedBack: MiniMessageComponent = "<green>Вы успешно переименовали предмет: <newname> </green>".asMiniMessageComponent(),
-            val feedBackToTarget: MiniMessageComponent = "<green>Вы успешно переименовали предмет: <newname> игроку <player> </green>".asMiniMessageComponent(),
-            val feedBackTarget: MiniMessageComponent = "<green>Вы успешно переименовали предмет: <newname> сделал это <player> </green>".asMiniMessageComponent()
-        )
-    }
-
-
-    // ilore
-
-    @ConfigSerializable
-    data class ItemLoreMessage(
-        val info: InfoMessages = InfoMessages(),
-        val help: HelpMessage = HelpMessage()
-    ) {
-        @ConfigSerializable
-        data class HelpMessage(
-            val info: MiniMessageComponent = "Использование команды: /ilore <player> <line>".asMiniMessageComponent()
-        )
-
-        @ConfigSerializable
-        data class InfoMessages(
-            val feedBack: MiniMessageComponent = "<green>Вы успешно переименовали предмет: <newlore> </green>".asMiniMessageComponent(),
             val feedBackToTarget: MiniMessageComponent = "<green>Вы успешно переименовали предмет: <newname> игроку <player> </green>".asMiniMessageComponent(),
             val feedBackTarget: MiniMessageComponent = "<green>Вы успешно переименовали предмет: <newname> сделал это <player> </green>".asMiniMessageComponent()
         )

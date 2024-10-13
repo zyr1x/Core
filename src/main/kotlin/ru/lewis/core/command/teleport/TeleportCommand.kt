@@ -66,4 +66,36 @@ class TeleportCommand @Inject constructor(
 
     }
 
+    @Execute(name = "s", aliases = ["tphere"])
+    fun tpHerePlayer(
+        @Context sender: User,
+        @Arg target: User
+    ) {
+
+        target.getBase().teleportAsync(
+            sender.getBase().location
+        ).thenRun {
+            sounds.teleport.play(target.getBase())
+        }
+
+        target.getBase().sendMessage(
+            messages.tpHere.info.feedBackTarget.resolve(
+                Placeholder.unparsed(
+                    "player",
+                    sender.getName()
+                )
+            )
+        )
+
+        sender.getBase().sendMessage(
+            messages.tpHere.info.feedBack.resolve(
+                Placeholder.unparsed(
+                    "player",
+                    target.getName()
+                )
+            )
+        )
+
+    }
+
 }

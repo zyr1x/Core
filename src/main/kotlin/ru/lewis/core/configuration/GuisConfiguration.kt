@@ -20,7 +20,8 @@ data class GuisConfiguration(
 
         val inventory: Inventory = Inventory(),
         val warpList: WarpList = WarpList(),
-        val homeList: HomeList = HomeList()
+        val homeList: HomeList = HomeList(),
+        val teleportRequestsList: TeleportRequestsList = TeleportRequestsList()
 
     ) {
 
@@ -69,6 +70,36 @@ data class GuisConfiguration(
                     )
                 )
             ),
+        )
+
+        @ConfigSerializable
+        data class TeleportRequestsList(
+            val template: MenuConfig = MenuConfig(
+                title = "Список запросов".asMiniMessageComponent(),
+                structure = listOf(
+                    ". . . . . . . . .",
+                    ". . . . . . . . .",
+                    ". . . . . . . . .",
+                    ". . . . . . . . .",
+                    "# # # # # # # # #",
+                    "x x x < U > x x x"
+                ),
+                customItems = mapOf(
+                    Pair(
+                        '#',
+                        ItemTemplate(Material.RED_STAINED_GLASS_PANE)
+                    )
+                ),
+            ),
+
+            val playerItemTemplate: ItemTemplate = ItemTemplate(
+                Material.GREEN_SHULKER_BOX,
+                displayName = "Запрос от: <player>".asMiniMessageComponent(),
+                lore = listOf(
+                    "<green>Нажмите, чтобы принять".asMiniMessageComponent()
+                )
+            )
+
         )
 
         @ConfigSerializable

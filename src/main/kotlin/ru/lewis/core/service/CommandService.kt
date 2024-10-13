@@ -29,6 +29,9 @@ import ru.lewis.core.command.spawn.SpawnCommand
 import ru.lewis.core.command.speed.FlySpeedCommand
 import ru.lewis.core.command.speed.WalkSpeedCommand
 import ru.lewis.core.command.teleport.TeleportCommand
+import ru.lewis.core.command.teleport.request.TeleportRequestAcceptCommand
+import ru.lewis.core.command.teleport.request.TeleportRequestCancelCommand
+import ru.lewis.core.command.teleport.request.TeleportRequestSendCommand
 import ru.lewis.core.command.warps.WarpRemoveCommand
 import ru.lewis.core.command.warps.WarpSetCommand
 import ru.lewis.core.command.warps.WarpTeleportCommand
@@ -102,7 +105,11 @@ class CommandService @Inject constructor(
     private val itemCommand: ItemCommand,
     private val warpSetCommand: WarpSetCommand,
     private val warpRemoveCommand: WarpRemoveCommand,
-    private val warpTeleportCommand: WarpTeleportCommand
+    private val warpTeleportCommand: WarpTeleportCommand,
+    private val feedCommand: FeedCommand,
+    private val teleportRequestAcceptCommand: TeleportRequestAcceptCommand,
+    private val teleportRequestCancelCommand: TeleportRequestCancelCommand,
+    private val teleportRequestSendCommand: TeleportRequestSendCommand
 
     ) : TerminableModule {
 
@@ -113,6 +120,10 @@ class CommandService @Inject constructor(
         LiteBukkitFactory.builder(plugin.name, plugin)
 
             .commands(
+                teleportRequestAcceptCommand,
+                teleportRequestCancelCommand,
+                teleportRequestSendCommand,
+                feedCommand,
                 warpSetCommand,
                 warpRemoveCommand,
                 warpTeleportCommand,

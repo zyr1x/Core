@@ -27,12 +27,6 @@ class FormatConfiguration(
             val east: MiniMessageComponent = "east".asMiniMessageComponent(),
             val west: MiniMessageComponent = "west".asMiniMessageComponent(),
 
-            val southeast: MiniMessageComponent = "southeast".asMiniMessageComponent(),
-            val southwest: MiniMessageComponent = "southwest".asMiniMessageComponent(),
-
-            val northeast: MiniMessageComponent = "northeast".asMiniMessageComponent(),
-            val northwest: MiniMessageComponent = "northwest".asMiniMessageComponent()
-
         )
 
     }

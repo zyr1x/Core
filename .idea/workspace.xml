@@ -4,19 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbe59979-0a4c-41a0-b49a-21fa0f63a9c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/argument/HomeArgument.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/argument/WarpArgument.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/warps/WarpRemoveCommand.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/warps/WarpSetCommand.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/warps/WarpTeleportCommand.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/model/hibernate/entity/WarpDataHibernateEntity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/model/templates/Home.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/model/templates/Warp.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/model/templates/impl/BasicHome.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/model/templates/impl/BasicWarp.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/service/GlobalService.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/service/WarpDataService.kt" afterDir="false" />
+    <list default="true" id="cbe59979-0a4c-41a0-b49a-21fa0f63a9c0" name="Changes" comment="upd src">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/features/FeedCommand.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/teleport/request/TeleportRequestAcceptCommand.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/teleport/request/TeleportRequestCancelCommand.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/teleport/request/TeleportRequestSendCommand.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" afterDir="false" />
@@ -24,24 +17,19 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/Main$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/Main$Companion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/bootstrap/InjectionModule.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/bootstrap/InjectionModule.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/argument/UserArgument.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/argument/UserArgument.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/context/UserContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/context/UserContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/features/FixCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/features/FixCommand.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/features/NearCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/features/NearCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/home/HomeCommand$HomeButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/home/HomeCommand$HomeButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/home/HomeCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/home/HomeCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/home/HomeRemoveCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/home/HomeRemoveCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/item/EnchantCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/item/EnchantCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/item/ItemNameCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/item/ItemNameCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/item/MoreCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/item/MoreCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/item/PotionCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/item/PotionCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/inventory/InvseeCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/inventory/InvseeCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/teleport/TeleportCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/command/teleport/TeleportCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/FormatConfiguration$Nearby$Direction.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/FormatConfiguration$Nearby$Direction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/FormatConfiguration$Nearby.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/FormatConfiguration$Nearby.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/GuisConfiguration$Buttons$SwitchPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/GuisConfiguration$Buttons$SwitchPage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/GuisConfiguration$Buttons.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/GuisConfiguration$Buttons.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/GuisConfiguration$Guis$HomeList.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/GuisConfiguration$Guis$HomeList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/GuisConfiguration$Guis$Inventory.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/GuisConfiguration$Guis$Inventory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/GuisConfiguration$Guis$WarpList.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/GuisConfiguration$Guis$WarpList.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/GuisConfiguration$Guis.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/GuisConfiguration$Guis.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/GuisConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/GuisConfiguration.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$AnvilMessage$HelpMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$AnvilMessage$HelpMessage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$AnvilMessage$InfoMessages.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$AnvilMessage$InfoMessages.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$AnvilMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$AnvilMessage.class" afterDir="false" />
@@ -97,9 +85,9 @@
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$HomeSetMessage$HelpMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$HomeSetMessage$HelpMessage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$HomeSetMessage$InfoMessages.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$HomeSetMessage$InfoMessages.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$HomeSetMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$HomeSetMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$ItemLoreMessage$HelpMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$ItemLoreMessage$HelpMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$ItemLoreMessage$InfoMessages.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$ItemLoreMessage$InfoMessages.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$ItemLoreMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$ItemLoreMessage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$ItemLoreMessage$HelpMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$ItemLoreMessage$InfoMessages.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$ItemLoreMessage.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$ItemNameMessage$HelpMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$ItemNameMessage$HelpMessage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$ItemNameMessage$InfoMessages.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$ItemNameMessage$InfoMessages.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$ItemNameMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$ItemNameMessage.class" afterDir="false" />
@@ -144,13 +132,13 @@
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportPlayerMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportPlayerMessage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportPositionMessage$InfoMessages.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportPositionMessage$InfoMessages.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportPositionMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportPositionMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$HelpMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$HelpMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$InfoMessages.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$InfoMessages.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$TeleportRequestAccept$InfoMessages.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$TeleportRequestAccept$InfoMessages.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$TeleportRequestAccept.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$TeleportRequestAccept.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$TeleportRequestDeny$InfoMessages.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$TeleportRequestDeny$InfoMessages.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$TeleportRequestDeny.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$TeleportRequestDeny.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$HelpMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$InfoMessages.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$TeleportRequestAccept$InfoMessages.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$TeleportRequestAccept.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$TeleportRequestDeny$InfoMessages.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage$TeleportRequestDeny.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TeleportRequestMessage.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TimeMessage$HelpMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TimeMessage$HelpMessage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TimeMessage$InfoMessages.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TimeMessage$InfoMessages.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TimeMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$TimeMessage.class" afterDir="false" />
@@ -167,15 +155,9 @@
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$WorkBenchMessage$InfoMessages.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$WorkBenchMessage$InfoMessages.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$WorkBenchMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration$WorkBenchMessage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/configuration/MessagesConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/model/AssistedInjectFactories.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/model/AssistedInjectFactories.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/model/user/PlayerExtension.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/model/user/PlayerExtension.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/model/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/model/user/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/model/user/UserData.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/model/user/UserData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/model/user/UserFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/model/user/UserFacade.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/service/CommandService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/service/CommandService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/service/UserDataService$PlayerDataHomeActual.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/service/UserDataService$PlayerDataHomeActual.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/service/UserDataService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/service/UserDataService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/main/ru/lewis/core/service/UserService.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream.len" afterDir="false" />
@@ -223,11 +205,7 @@
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.s" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.s" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream.len" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.len" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream.len" afterDir="false" />
@@ -256,26 +234,17 @@
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.s" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.s" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/lookups.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/lookups.tab_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/last-build.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/classpath-snapshot/shrunk-classpath-snapshot.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/classpath-snapshot/shrunk-classpath-snapshot.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/local-state/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/local-state/build-history.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/Core.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/Core.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/bootstrap/InjectionModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/bootstrap/InjectionModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/argument/UserArgument.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/argument/UserArgument.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/context/UserContext.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/context/UserContext.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/features/FixCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/features/FixCommand.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/features/NearCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/features/NearCommand.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/home/HomeCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/home/HomeCommand.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/home/HomeRemoveCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/home/HomeRemoveCommand.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/teleport/TeleportCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/command/teleport/TeleportCommand.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/configuration/FormatConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/configuration/FormatConfiguration.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/configuration/GuisConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/configuration/GuisConfiguration.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/configuration/MessagesConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/configuration/MessagesConfiguration.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/model/AssistedInjectFactories.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/model/AssistedInjectFactories.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/model/user/PlayerExtension.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/model/user/PlayerExtension.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/model/user/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/model/user/User.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/model/user/UserData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/model/user/UserData.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/model/user/UserFacade.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/model/user/UserFacade.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/service/CommandService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/service/CommandService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/service/UserDataService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/service/UserDataService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/service/UserService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ru/lewis/core/model/manager/UserManager.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -324,6 +293,7 @@
         <option value="Kotlin Data Class" />
         <option value="Interface" />
         <option value="Kotlin Interface" />
+        <option value="Class" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -403,6 +373,19 @@
       <option name="presentableId" value="Default" />
       <updated>1728653077356</updated>
     </task>
+    <task id="LOCAL-00001" summary="upd src">
+      <option name="closed" value="true" />
+      <created>1728748784156</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1728748784156</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="upd src" />
+    <option name="LAST_COMMIT_MESSAGE" value="upd src" />
   </component>
 </project>

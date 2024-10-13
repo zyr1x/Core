@@ -29,7 +29,7 @@ interface User {
     fun isGod(): Boolean
     fun setGod(value: Boolean)
 
-    fun teleportRequests(): List<User>
+    fun teleportRequests(): MutableList<User>
     fun sendRequest(user: User): Boolean
     fun deleteRequest(user: User): Boolean
 

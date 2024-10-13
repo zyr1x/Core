@@ -33,7 +33,7 @@ class UserFacade @Inject constructor(
         this.getBase().isInvulnerable = value
     }
 
-    override fun teleportRequests(): List<User> = teleportRequests
+    override fun teleportRequests(): MutableList<User> = teleportRequests
 
     override fun sendRequest(user: User): Boolean {
         teleportRequests.add(user)
