@@ -4,8 +4,10 @@ import com.google.inject.ImplementedBy
 import org.bukkit.Location
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
+import ru.lewis.core.configuration.type.KitTemplate
 import ru.lewis.core.model.templates.Home
 import ru.lewis.core.model.templates.Warp
+import java.time.Duration
 import java.util.UUID
 
 @ImplementedBy(UserFacade::class)
@@ -36,6 +38,11 @@ interface User {
     /*
      * UserData
      */
+
+    fun existsKitCooldown(kit: KitTemplate): Boolean
+    fun getKitCooldown(kit: KitTemplate): Duration
+    fun insertKitCooldown(kit: KitTemplate)
+    fun removeKitCooldown(kit: KitTemplate)
 
     fun getHome(name: String): Home?
     fun getHomes(): List<Home>

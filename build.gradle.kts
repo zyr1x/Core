@@ -41,6 +41,10 @@ dependencies {
     //hibernate
     library("org.hibernate.orm:hibernate-core:$hibernateVersion")
     library("org.hibernate.orm:hibernate-hikaricp:$hibernateVersion")
+    library("org.hibernate:hibernate-community-dialects:$hibernateVersion")
+
+    // sqlite
+    library("org.xerial:sqlite-jdbc:3.8.9.1")
 
     // invui
     library("xyz.xenondevs.invui:invui-core:$invUiVersion")
@@ -67,7 +71,6 @@ dependencies {
     library("de.tr7zw:item-nbt-api:2.13.1")
     library("com.google.guava:guava:33.3.0-jre")
     library("org.mariadb.jdbc:mariadb-java-client:3.4.1")
-    library("org.xerial:sqlite-jdbc:3.39.3.0")
     library("com.fasterxml.jackson.core:jackson-databind:2.17.1")
     library("org.slf4j:slf4j-api:2.0.16")
 

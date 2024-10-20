@@ -11,10 +11,10 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import ru.lewis.core.model.templates.Warp
 import ru.lewis.core.service.ConfigurationService
-import ru.lewis.core.service.GlobalService
+import ru.lewis.core.service.game.GameService
 
 class WarpArgument @Inject constructor(
-    private val globalService: GlobalService,
+    private val gameService: GameService,
     private val configurationService: ConfigurationService
 ): ArgumentResolver<CommandSender, Warp>() {
 
@@ -27,7 +27,7 @@ class WarpArgument @Inject constructor(
             return ParseResult.failure(errors.onlyPlayer.asComponent())
         }
 
-        val warp = globalService.getWarpData().getWarp(arg)
+        val warp = gameService.getWarpData().getWarp(arg)
             ?: return ParseResult.failure(
                 messages.errors.warpNotFound.asComponent()
             )
@@ -47,7 +47,7 @@ class WarpArgument @Inject constructor(
         }
 
         return SuggestionResult.of(
-            globalService.getWarpData().getData()
+            gameService.getWarpData().getData()
                 .map { it.getName() }
         )
 

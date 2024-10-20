@@ -57,7 +57,10 @@ data class MessagesConfiguration(
         val feed: FeedMessages = FeedMessages(),
         val teleportRequest: TeleportRequestMessages = TeleportRequestMessages(),
         val teleportRequestAccept: TeleportRequestAcceptMessages = TeleportRequestAcceptMessages(),
-        val teleportRequestCancel: TeleportRequestCancelMessages = TeleportRequestCancelMessages()
+        val teleportRequestCancel: TeleportRequestCancelMessages = TeleportRequestCancelMessages(),
+        val kitGet: KitGetMessages = KitGetMessages(),
+        val kitCreate: KitCreateMessages = KitCreateMessages(),
+        val kitRemove: KitRemoveMessages = KitRemoveMessages()
     )
 
     @ConfigSerializable
@@ -98,6 +101,54 @@ data class MessagesConfiguration(
             val playerNotFound: MiniMessageComponent = "Вы не отправляли игроку <player> запросов!".asMiniMessageComponent()
         )
 
+    }
+
+    @ConfigSerializable
+    data class KitRemoveMessages(
+        val info: InfoMessages = InfoMessages(),
+        val error: ErrorMessages = ErrorMessages()
+    ) {
+        @ConfigSerializable
+        data class InfoMessages(
+            val feedBack: MiniMessageComponent = "".asMiniMessageComponent()
+        )
+        @ConfigSerializable
+        data class ErrorMessages(
+            val notFound: MiniMessageComponent = "Набор не найден".asMiniMessageComponent()
+        )
+    }
+
+    @ConfigSerializable
+    data class KitCreateMessages(
+        val error: ErrorMessages = ErrorMessages(),
+        val info: InfoMessages = InfoMessages()
+    ) {
+        @ConfigSerializable
+        data class InfoMessages(
+            val feedBack: MiniMessageComponent = "".asMiniMessageComponent()
+        )
+        @ConfigSerializable
+        data class ErrorMessages(
+            val isFound: MiniMessageComponent = "".asMiniMessageComponent()
+        )
+    }
+
+    @ConfigSerializable
+    data class KitGetMessages(
+        val info: InfoMessages = InfoMessages(),
+        val error: ErrorMessages = ErrorMessages()
+    ) {
+        @ConfigSerializable
+        data class InfoMessages(
+            val feedBack: MiniMessageComponent = "".asMiniMessageComponent(),
+            val feedBackToTarget: MiniMessageComponent = "".asMiniMessageComponent(),
+            val feedBackTarget: MiniMessageComponent = "".asMiniMessageComponent()
+        )
+        @ConfigSerializable
+        data class ErrorMessages(
+            val notFound: MiniMessageComponent = "Набор не найден".asMiniMessageComponent(),
+            val cooldown: MiniMessageComponent = "У вас задержка на набор: <time>".asMiniMessageComponent(),
+        )
     }
 
     @ConfigSerializable

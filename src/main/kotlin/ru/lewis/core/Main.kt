@@ -7,12 +7,13 @@ import org.slf4j.Logger
 import ru.lewis.core.model.SmartLifoCompositeTerminable
 import ru.lewis.core.model.manager.UserManager
 import ru.lewis.core.service.*
+import ru.lewis.core.service.game.GameService
 import xyz.xenondevs.invui.InvUI
 
 class Main @Inject constructor(
 
     private val configurationService: ConfigurationService,
-    private val userDataService: GlobalService,
+    private val userDataService: GameService,
     private val userService: UserManager,
     private val commandService: CommandService,
     private val bukkitAudiences: BukkitAudiences,

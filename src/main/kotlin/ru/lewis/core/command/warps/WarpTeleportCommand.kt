@@ -4,6 +4,7 @@ import dev.rollczi.litecommands.annotations.argument.Arg
 import dev.rollczi.litecommands.annotations.command.Command
 import dev.rollczi.litecommands.annotations.context.Context
 import dev.rollczi.litecommands.annotations.execute.Execute
+import dev.rollczi.litecommands.annotations.permission.Permission
 import jakarta.inject.Inject
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder
 import org.bukkit.entity.Player
@@ -14,7 +15,7 @@ import ru.lewis.core.model.AssistedInjectFactories
 import ru.lewis.core.model.templates.Warp
 import ru.lewis.core.model.user.User
 import ru.lewis.core.service.ConfigurationService
-import ru.lewis.core.service.GlobalService
+import ru.lewis.core.service.game.GameService
 import xyz.xenondevs.invui.item.ItemProvider
 import xyz.xenondevs.invui.item.builder.ItemBuilder
 import xyz.xenondevs.invui.item.impl.AbstractItem
@@ -22,10 +23,11 @@ import xyz.xenondevs.invui.window.Window
 import xyz.xenondevs.invui.window.type.context.setTitle
 
 @Command(name = "warp", aliases = ["warps"])
+@Permission("core.command.warps")
 class WarpTeleportCommand @Inject constructor(
     private val configurationService: ConfigurationService,
     private val assistedInjectFactories: AssistedInjectFactories,
-    private val globalService: GlobalService
+    private val gameService: GameService
 ){
 
     private val messages get() = configurationService.messages.common.warpTeleport
@@ -68,7 +70,7 @@ class WarpTeleportCommand @Inject constructor(
                 )
 
                 setContent(
-                    globalService.getWarpData().getData().map { warp ->
+                    gameService.getWarpData().getData().map { warp ->
                         WarpButton(
                             user,
                             warp

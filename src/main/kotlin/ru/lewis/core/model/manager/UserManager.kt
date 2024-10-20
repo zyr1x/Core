@@ -6,17 +6,16 @@ import me.lucko.helper.Events
 import me.lucko.helper.terminable.TerminableConsumer
 import me.lucko.helper.terminable.module.TerminableModule
 import org.bukkit.OfflinePlayer
-import org.bukkit.entity.Player
 import org.bukkit.event.player.PlayerQuitEvent
 import ru.lewis.core.model.AssistedInjectFactories
 import ru.lewis.core.model.user.User
-import ru.lewis.core.service.GlobalService
-import ru.lewis.core.service.UserDataService
+import ru.lewis.core.service.game.GameService
+import ru.lewis.core.service.game.data.GameUserData
 
 @Singleton
 class UserManager @Inject constructor(
     private val assistedInjectFactories: AssistedInjectFactories,
-    private val globalService: GlobalService
+    private val gameService: GameService
 ) : TerminableModule {
 
     override fun setup(consumer: TerminableConsumer) {
@@ -46,8 +45,10 @@ class UserManager @Inject constructor(
 
         }
 
-        val playerDataHomeActual: UserDataService.PlayerDataHomeActual = globalService.getUserData().PlayerDataHomeActual(offlinePlayer)
-        val user = assistedInjectFactories.createUser(offlinePlayer, playerDataHomeActual)
+        val playerDataHomeActual: GameUserData.PlayerDataHomeActual = gameService.getUserData().PlayerDataHomeActual(offlinePlayer)
+        val playerDataKitCooldownActual: GameUserData.PlayerKitDataCooldownActual = gameService.getUserData().PlayerKitDataCooldownActual(offlinePlayer)
+
+        val user = assistedInjectFactories.createUser(offlinePlayer, playerDataHomeActual, playerDataKitCooldownActual)
         users.add(user)
 
         return user

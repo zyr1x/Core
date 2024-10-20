@@ -21,9 +21,59 @@ data class GuisConfiguration(
         val inventory: Inventory = Inventory(),
         val warpList: WarpList = WarpList(),
         val homeList: HomeList = HomeList(),
+        val kitList: KitList = KitList(),
+        val kitItemsList: KitItemsList = KitItemsList(),
         val teleportRequestsList: TeleportRequestsList = TeleportRequestsList()
 
     ) {
+
+        @ConfigSerializable
+        data class KitItemsList(
+            val template: MenuConfig = MenuConfig(
+                title = "Набор: <kit>".asMiniMessageComponent(),
+                structure = listOf(
+                    ". . . . . . . . .",
+                    ". . . . . . . . .",
+                    ". . . . # . . . .",
+                    ". . . . # . . . .",
+                    ". . . . . . . . .",
+                    ". . . . . . . . ."
+                ),
+                customItems = mapOf(
+                    Pair(
+                        '#',
+                        ItemTemplate(Material.RED_STAINED_GLASS_PANE)
+                    )
+                ),
+            ),
+            val notAvailableItem: ItemTemplate = ItemTemplate(
+                Material.RED_WOOL
+            )
+        )
+
+        @ConfigSerializable
+        data class KitList(
+            val template: MenuConfig = MenuConfig(
+                title = "Доступные наборы".asMiniMessageComponent(),
+                structure = listOf(
+                    ". . . . . . . . .",
+                    ". . . . . . . . .",
+                    ". . . . # . . . .",
+                    ". . . . # . . . .",
+                    ". . . . . . . . .",
+                    ". . . . . . . . ."
+                ),
+                customItems = mapOf(
+                    Pair(
+                        '#',
+                        ItemTemplate(Material.RED_STAINED_GLASS_PANE)
+                    )
+                ),
+            ),
+            val notAvailableItem: ItemTemplate = ItemTemplate(
+                Material.RED_WOOL
+            )
+        )
 
         @ConfigSerializable
         data class Inventory(

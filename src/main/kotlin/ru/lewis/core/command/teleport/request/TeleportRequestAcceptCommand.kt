@@ -4,6 +4,7 @@ import dev.rollczi.litecommands.annotations.argument.Arg
 import dev.rollczi.litecommands.annotations.command.Command
 import dev.rollczi.litecommands.annotations.context.Context
 import dev.rollczi.litecommands.annotations.execute.Execute
+import dev.rollczi.litecommands.annotations.permission.Permission
 import jakarta.inject.Inject
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder
 import org.bukkit.entity.Player
@@ -20,6 +21,7 @@ import xyz.xenondevs.invui.window.Window
 import xyz.xenondevs.invui.window.type.context.setTitle
 
 @Command(name = "tpyes", aliases = ["tpaccept", "tps"])
+@Permission("core.command.tps")
 class TeleportRequestAcceptCommand @Inject constructor(
     private val configurationService: ConfigurationService,
     private val assistedInjectFactories: AssistedInjectFactories

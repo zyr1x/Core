@@ -17,10 +17,7 @@ import org.spongepowered.configurate.kotlin.objectMapperFactory
 import org.spongepowered.configurate.yaml.NodeStyle
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader
 import ru.boomearo.langhelper.versions.LangType
-import ru.lewis.core.configuration.Configuration
-import ru.lewis.core.configuration.FormatConfiguration
-import ru.lewis.core.configuration.GuisConfiguration
-import ru.lewis.core.configuration.MessagesConfiguration
+import ru.lewis.core.configuration.*
 import ru.lewis.core.configuration.serializer.*
 import ru.lewis.core.configuration.type.BossBarConfiguration
 import ru.lewis.core.configuration.type.MiniMessageComponent
@@ -56,19 +53,33 @@ class ConfigurationService @Inject constructor(
     lateinit var guis: GuisConfiguration
         private set
 
+    lateinit var kitsConfiguration: KitsConfiguration
+        private set
+
     private val rootDirectory = Path("")
     private val settingsFile = plugin.dataFolder.toPath().resolve("settings.yml")
     private val guisFile = plugin.dataFolder.toPath().resolve("guis.yml")
     private val messagesFile = plugin.dataFolder.toPath().resolve("language/message_ru.yml")
     private val formatFile = plugin.dataFolder.toPath().resolve("format.yml")
+    private val kitFile = plugin.dataFolder.toPath().resolve("kits.yml")
 
     override fun setup(consumer: TerminableConsumer) = doReload()
+
+    val builder: YamlConfigurationLoader.Builder by lazy {
+        createLoaderBuilder()
+    }
 
     fun reload() = doReload()
 
     fun saveConfig() {
-        createLoaderBuilder().path(settingsFile).build().let {
+        builder.path(settingsFile).build().let {
             it.save(it.createNode().set(config))
+        }
+    }
+
+    fun saveKits() {
+        builder.path(kitFile).build().let {
+            it.save(it.createNode().set(kitsConfiguration))
         }
     }
 
@@ -80,12 +91,11 @@ class ConfigurationService @Inject constructor(
     private fun doReload() {
         plugin.dataFolder.toPath().createDirectories()
 
-        val builder = createLoaderBuilder()
-
         format = builder.path(formatFile).build().getAndSave<FormatConfiguration>()
         guis = builder.path(guisFile).build().getAndSave<GuisConfiguration>()
         config = builder.path(settingsFile).build().getAndSave<Configuration>()
         messages = builder.path(messagesFile).build().getAndSave<MessagesConfiguration>()
+        kitsConfiguration = builder.path(kitFile).build().getAndSave<KitsConfiguration>()
     }
 
     private fun createLoaderBuilder(): YamlConfigurationLoader.Builder {

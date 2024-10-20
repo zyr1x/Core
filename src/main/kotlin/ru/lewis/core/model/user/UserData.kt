@@ -1,23 +1,54 @@
 package ru.lewis.core.model.user
 
+import io.github.blackbaroness.durationserializer.DurationFormats
 import org.bukkit.Location
 import org.bukkit.OfflinePlayer
-import org.bukkit.entity.Player
+import ru.lewis.core.configuration.type.KitTemplate
+import ru.lewis.core.extension.format
 import ru.lewis.core.model.templates.Home
 import ru.lewis.core.model.templates.Warp
-import ru.lewis.core.service.UserDataService
-import ru.lewis.core.service.WarpDataService
+import ru.lewis.core.service.game.data.GameUserData
+import ru.lewis.core.service.game.data.GameWarpData
+import java.time.Duration
 
 abstract class UserData(
 
     private val offlinePlayer: OfflinePlayer,
-    private val playerDataHomeActual: UserDataService.PlayerDataHomeActual,
-    private val warpDataService: WarpDataService
+    private val playerDataHomeActual: GameUserData.PlayerDataHomeActual,
+    private val playerKitDataCooldownActual: GameUserData.PlayerKitDataCooldownActual,
+    private val warpDataService: GameWarpData
 
 ) : PlayerExtension(offlinePlayer) {
 
     private lateinit var lastLocation: Location
     private var afk: Boolean = false
+
+    fun getKitCooldown(kit: KitTemplate): Duration {
+
+        val startCooldown: Long = playerKitDataCooldownActual.getData()[kit.name]!! + kit.cooldown.toMillis()
+        val currentTime = System.currentTimeMillis()
+
+        val newTime = startCooldown - currentTime
+
+        if (newTime <= 0) {
+            removeKitCooldown(kit)
+        }
+
+        return Duration.ofMillis(newTime)
+
+    }
+
+    fun existsKitCooldown(kit: KitTemplate): Boolean {
+        return playerKitDataCooldownActual.exists(kit)
+    }
+
+    fun insertKitCooldown(kit: KitTemplate) {
+        playerKitDataCooldownActual.insert(kit)
+    }
+
+    fun removeKitCooldown(kit: KitTemplate) {
+        playerKitDataCooldownActual.remove(kit)
+    }
 
     fun getHome(name: String): Home? {
         return playerDataHomeActual.getHome(name)

@@ -1,4 +1,4 @@
-package ru.lewis.core.service
+package ru.lewis.core.service.game.data
 
 import com.google.inject.assistedinject.Assisted
 import jakarta.inject.Inject
@@ -7,12 +7,11 @@ import org.bukkit.Location
 import org.hibernate.SessionFactory
 import ru.lewis.core.extension.runAsync
 import ru.lewis.core.model.AssistedInjectFactories
-import ru.lewis.core.model.hibernate.entity.PlayerDataHomeHibernateEntity
 import ru.lewis.core.model.hibernate.entity.WarpDataHibernateEntity
 import ru.lewis.core.model.templates.Warp
 import java.util.UUID
 
-class WarpDataService @Inject constructor(
+class GameWarpData @Inject constructor(
     private val assistedInjectFactories: AssistedInjectFactories,
     @Assisted private val sessionFactory: SessionFactory
 ) {

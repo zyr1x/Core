@@ -24,6 +24,9 @@ import ru.lewis.core.command.home.HomeCommand
 import ru.lewis.core.command.home.HomeRemoveCommand
 import ru.lewis.core.command.home.HomeSetCommand
 import ru.lewis.core.command.item.*
+import ru.lewis.core.command.kit.KitCreateCommand
+import ru.lewis.core.command.kit.KitGetCommand
+import ru.lewis.core.command.kit.KitRemoveCommand
 import ru.lewis.core.command.spawn.SetSpawnCommand
 import ru.lewis.core.command.spawn.SpawnCommand
 import ru.lewis.core.command.speed.FlySpeedCommand
@@ -36,6 +39,7 @@ import ru.lewis.core.command.warps.WarpRemoveCommand
 import ru.lewis.core.command.warps.WarpSetCommand
 import ru.lewis.core.command.warps.WarpTeleportCommand
 import ru.lewis.core.command.world.WorldCommands
+import ru.lewis.core.configuration.type.KitTemplate
 import ru.lewis.core.model.templates.Home
 import ru.lewis.core.model.templates.Warp
 import ru.lewis.core.model.user.User
@@ -55,6 +59,7 @@ class CommandService @Inject constructor(
     private val userArgument: UserArgument,
     private val homeArgument: HomeArgument,
     private val warpArgument: WarpArgument,
+    private val kitTemplateArgument: KitArgument,
 
     /*
     * context
@@ -109,7 +114,10 @@ class CommandService @Inject constructor(
     private val feedCommand: FeedCommand,
     private val teleportRequestAcceptCommand: TeleportRequestAcceptCommand,
     private val teleportRequestCancelCommand: TeleportRequestCancelCommand,
-    private val teleportRequestSendCommand: TeleportRequestSendCommand
+    private val teleportRequestSendCommand: TeleportRequestSendCommand,
+    private val kitGetCommand: KitGetCommand,
+    private val kitCreateCommand: KitCreateCommand,
+    private val kitRemoveCommand: KitRemoveCommand
 
     ) : TerminableModule {
 
@@ -120,6 +128,9 @@ class CommandService @Inject constructor(
         LiteBukkitFactory.builder(plugin.name, plugin)
 
             .commands(
+                kitGetCommand,
+                kitCreateCommand,
+                kitRemoveCommand,
                 teleportRequestAcceptCommand,
                 teleportRequestCancelCommand,
                 teleportRequestSendCommand,
@@ -172,6 +183,7 @@ class CommandService @Inject constructor(
             .argument(PotionEffectType::class.java, potionEffectTypeArgument)
             .argument(Enchantment::class.java, enchantmentArgument)
             .argument(User::class.java, userArgument)
+            .argument(KitTemplate::class.java, kitTemplateArgument)
 
             .argumentSuggestion(Int::class.java, ArgumentKey.of("1..10"),
                 SuggestionResult.of(

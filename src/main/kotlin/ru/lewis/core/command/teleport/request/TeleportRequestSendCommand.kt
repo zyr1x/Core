@@ -4,6 +4,7 @@ import dev.rollczi.litecommands.annotations.argument.Arg
 import dev.rollczi.litecommands.annotations.command.Command
 import dev.rollczi.litecommands.annotations.context.Context
 import dev.rollczi.litecommands.annotations.execute.Execute
+import dev.rollczi.litecommands.annotations.permission.Permission
 import jakarta.inject.Inject
 import me.lucko.helper.Schedulers
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder
@@ -13,6 +14,7 @@ import ru.lewis.core.service.ConfigurationService
 import java.util.concurrent.TimeUnit
 
 @Command(name = "tpa", aliases = ["tpr"])
+@Permission("core.command.tpa")
 class TeleportRequestSendCommand @Inject constructor(
     private val configurationService: ConfigurationService,
     private val assistedInjectFactories: AssistedInjectFactories
